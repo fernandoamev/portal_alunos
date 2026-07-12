@@ -4,7 +4,7 @@ from fastapi.exceptions import HTTPException
 
 # Importações dos módulos da aplicação
 from src.app.database import init_db
-from src.app.routes.student_routes import student_router
+from src.app.routes.student_routes import router as student_router
 
 app = FastAPI(
     title="Student Management API",
@@ -32,7 +32,7 @@ async def http_exception_handler(request: Request, exc: HTTPException):
     )
 
 # Registro dos routers
-app.include_router(student_router, prefix="/students", tags=["students"])
+app.include_router(student_router)
 
 # Exemplo de rota raiz
 @app.get("/", status_code=status.HTTP_200_OK, tags=["root"])
