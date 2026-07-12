@@ -17,7 +17,7 @@ async def startup_event():
     """
     Função para inicializar o banco de dados na inicialização da aplicação.
     """
-    await init_db()
+    init_db()
     print("Database initialized and connected.")
 
 @app.exception_handler(HTTPException)
