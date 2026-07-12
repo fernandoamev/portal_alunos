@@ -3,8 +3,8 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import HTTPException
 
 # Importações dos módulos da aplicação
-from app.database import init_db
-from app.routes.student import student_router
+from src.app.database import init_db
+from src.app.routes.student_routes import student_router
 
 app = FastAPI(
     title="Student Management API",
