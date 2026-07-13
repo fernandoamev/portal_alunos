@@ -1,0 +1,21 @@
+name: Jules QA Automation
+
+on:
+  workflow_dispatch: # Esse comando cria um botão no GitHub para você acionar o agente a hora que quiser!
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Acionar Agente de Testes (Jules)
+        uses: google-labs-code/jules-invoke@v1
+        with:
+          prompt: |
+            You are a QA Automation Engineer.
+            Please analyze this FastAPI and SQLite codebase and implement the automated test suite requested in our open GitHub Issues.
+            Specifically, create a tests/ directory containing test_students.py using pytest and TestClient.
+            Validate status codes 201 (create), 200 (read), 409 (duplicate email conflict), and 422 (Pydantic validation).
+            Ensure all tests pass and open a Pull Request with your solution.
+          jules_api_key: ${{ secrets.JULES_API_KEY }}
